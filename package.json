@@ -1,0 +1,18 @@
+{
+  "name": "telus",
+  "version": "1.0.0",
+  "description": "Telus Coding Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Umair Mumtaz",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.10.0"
+  },
+  "dependencies": {
+    "cypress-iframe": "^1.0.1",
+    "cypress-real-events": "^1.12.0"
+  }
+}
