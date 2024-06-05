@@ -9,10 +9,13 @@
   "author": "Umair Mumtaz",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.10.0"
+    "cypress": "^13.10.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome-merge": "^4.3.0"
   },
   "dependencies": {
     "cypress-iframe": "^1.0.1",
-    "cypress-real-events": "^1.12.0"
+    "cypress-real-events": "^1.12.0",
+    "mochawesome": "^7.1.3"
   }
 }
