@@ -13,5 +13,5 @@ jobs:
         uses: actions/checkout@v4
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
+      - name: cypress run --browser chrome
         uses: cypress-io/github-action@v6
