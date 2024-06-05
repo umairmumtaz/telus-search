@@ -11,8 +11,10 @@ describe('Telus Search', () => {
     cy.viewport(2999, 2000)
 
     // Simulate a user clicking on the language toggler button
+    cy.wait(3000).then(() => {
     cy.get('button[data-test="languageToggler"]').realMouseDown()
     cy.get('button[data-test="languageToggler"]').realHover()
+    })
 
     // Hover over the search button
     cy.get('nav[aria-label="search and cart"] form[id="ge-search-input"] span button').realHover()
