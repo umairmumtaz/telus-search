@@ -55,21 +55,19 @@ describe('Telus Search', () => {
     // This is done to verify that the search function is working properly
     cy.get('ul> li > a[href^="https://www.telus.com"][href*="search_result_"]').should('have.length.at.least', 6)
 
-    cy.wait(5000)// added just because the github action was timing out
+    cy.wait(5000).then(() => { // this wait is only to fix github actions time out error
+      // Test that the first 6 search results have clickable links
+      // This is done to verify that the links are working properly
+      const resultLinks = ['1', '2', '3', '4', '5', '6'];
+      resultLinks.forEach((resultNumber) => {
+        // For each result link, check that the href attribute is not undefined
+        cy.get(`ul> li > a[href^="https://www.telus.com"][href*="search_result_${resultNumber}"]`).should("not.have.attr", "href", "undefined");
+      });
 
-    // Test that the first 6 search results have clickable links
-    // This is done to verify that the links are working properly
-    const resultLinks = ['1', '2', '3', '4', '5', '6'];
-    resultLinks.forEach((resultNumber) => {
-      // For each result link, check that the href attribute is not undefined
-      cy.get(`ul> li > a[href^="https://www.telus.com"][href*="search_result_${resultNumber}"]`).should("not.have.attr", "href", "undefined");
-    });
-
-
-    // Click on the first search result
-    // This is done to verify that the search result page is rendered correctly
-    cy.get('ul> li > a[href^="https://www.telus.com/en/mobility"][href$="search_result_1"]').click()
-       
+      // Click on the first search result
+      // This is done to verify that the search result page is rendered correctly
+      cy.get('ul> li > a[href^="https://www.telus.com/en/mobility"][href$="search_result_1"]').click()
+  })
   })
  
 })
