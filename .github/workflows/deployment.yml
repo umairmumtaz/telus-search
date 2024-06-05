@@ -1,0 +1,17 @@
+name: Cypress automatic deployment  # Name of the workflow    
+
+on:
+  push:
+    branches: [main]  # Branches that will trigger the workflow   
+
+jobs:
+  cypress-run:  
+  runs-on: ubuntu-latest  # OS that the workflow will run on
+
+  steps:
+    - name: Checkout  
+      uses: actions/checkout@v3
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v5
+      
