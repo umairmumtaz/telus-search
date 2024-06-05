@@ -1,27 +1,5 @@
 name: cron-job
 
-on:
-  schedule:
-    # runs tests every day at 4am
-    - cron: '0 4 * * *'
-  workflow_dispatch:
-    inputs:
-      schedule:
-        description: Manually trigger workflow
-        type: string
-        required: false
-    jobs:
-      daily-tests:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4
-          # Install npm dependencies, cache them correctly
-          # and run all Cypress tests
-          - name: Cypress run
-            uses: cypress-io/github-action@v6
-            if: github.event_name == 'schedule' || inputs.schedule == 'true'
-
 on: push
 jobs:
   cypress-run:
