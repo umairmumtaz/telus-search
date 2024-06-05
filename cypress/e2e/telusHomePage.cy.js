@@ -55,7 +55,8 @@ describe('Telus Search', () => {
     // This is done to verify that the search function is working properly
     cy.get('ul> li > a[href^="https://www.telus.com"][href*="search_result_"]').should('have.length.at.least', 6)
 
-    
+    cy.wait(5000)// added just because the github action was timing out
+
     // Test that the first 6 search results have clickable links
     // This is done to verify that the links are working properly
     const resultLinks = ['1', '2', '3', '4', '5', '6'];
