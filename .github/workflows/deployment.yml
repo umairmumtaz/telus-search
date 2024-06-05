@@ -1,17 +1,14 @@
-name: Cypress automatic deployment  # Name of the workflow    
+name: cron-job
 
-on:
-  push:
-    branches: [dev] # Branches that will trigger the workflow   
 
+on: push
 jobs:
-  cypress-run:  
-  runs-on: ubuntu-latest  # OS that the workflow will run on
-
-  steps:
-    - name: Checkout  
-      uses: actions/checkout@v3
-
-    - name: Cypress run
-      uses: cypress-io/github-action@v5
-      
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
