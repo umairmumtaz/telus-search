@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-06-05T19:18:29.329Z",
+    "end": "2024-06-05T19:19:16.202Z",
+    "duration": 46873,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "807e81ca-8280-4663-a857-78169053df41",
+      "title": "",
+      "fullFile": "cypress\\e2e\\telusHomePage.cy.js",
+      "file": "cypress\\e2e\\telusHomePage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2e8cd404-46de-4960-8665-54fc02effb00",
+          "title": "Telus Search",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Search",
+              "fullTitle": "Telus Search Search",
+              "timedOut": null,
+              "duration": 41921,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Visit the Telus homepage\ncy.visit('https://telus.com');\n// Set the viewport to 2999x2000\n// This is done to ensure that the mobile version of the page is loaded\ncy.viewport(2999, 2000);\n// Wait for the search button to be visible, then hover over it\n// This is done to ensure that the search button is in focus\ncy.wait(5000).then(() => {\n  // Get the search button and make sure it is visible\n  // This is done to ensure that we are looking at the correct element\n  cy.get('nav[aria-label=\"search and cart\"] form[id=\"ge-search-input\"] span button').should('be.visible');\n  // Hover over the search button\n  // This is done to ensure that the search input is in focus\n  cy.get('nav[aria-label=\"search and cart\"] form[id=\"ge-search-input\"] span button').realHover();\n});\n// Click on the search button\n// This is done to open the search input\ncy.get('nav[aria-label=\"search and cart\"] form[id=\"ge-search-input\"] span button').click();\n// Type the search text into the search input\n// This is done to search for the provided text\ncy.get('input[data-test=\"search-input\"]').type(inputText);\n// Wait for the search results to load, then click on the 3rd result\n// This is done to verify that the search results are loaded\ncy.wait(3000).then(() => {\n  // Get the 3rd search result and click on it\n  // This is done to open the search result\n  cy.get('nav[aria-label=\"search and cart\"] ul[class^=\"sc-\"] li:nth-child(3) a').click();\n});\n// Check that the search label is present and contains the expected text\n// This is done to verify that the search result is related to the search term\ncy.get('div[class^=\"styles__SearchLabelContainer-\"] div[dir=\"auto\"]').should($div => {\n  const text = $div.text();\n  // The search result should contain the word \"internet\"\n  expect(text).to.match(/internet/);\n  // The search result should contain the full search term\n  expect(text).to.include('internet');\n});\n// Validate that there are at least 6 search results\n// This is done to verify that the search function is working properly\ncy.get('ul> li > a[href^=\"https://www.telus.com\"][href*=\"search_result_\"]').should('have.length.at.least', 6);\ncy.wait(5000).then(() => {\n  // this wait is only to fix github actions time out error\n  // Test that the first 6 search results have clickable links\n  // This is done to verify that the links are working properly\n  const resultLinks = ['1', '2', '3', '4', '5', '6'];\n  resultLinks.forEach(resultNumber => {\n    // For each result link, check that the href attribute is not undefined\n    cy.get(`ul> li > a[href^=\"https://www.telus.com\"][href*=\"search_result_${resultNumber}\"]`).should(\"not.have.attr\", \"href\", \"undefined\");\n  });\n  // Click on the first search result\n  // This is done to verify that the search result page is rendered correctly\n  cy.get('ul> li > a[href^=\"https://www.telus.com/en/mobility\"][href$=\"search_result_1\"]').click();\n});",
+              "err": {},
+              "uuid": "907a507d-231d-4261-a486-b67339a82286",
+              "parentUUID": "2e8cd404-46de-4960-8665-54fc02effb00",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "907a507d-231d-4261-a486-b67339a82286"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 41921,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
