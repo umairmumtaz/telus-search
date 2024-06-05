@@ -2,7 +2,7 @@ name: Cypress automatic deployment  # Name of the workflow
 
 on:
   push:
-    branches: [main]  # Branches that will trigger the workflow   
+    branches: [dev] # Branches that will trigger the workflow   
 
 jobs:
   cypress-run:  
