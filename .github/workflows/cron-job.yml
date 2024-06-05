@@ -1,9 +1,13 @@
-name: deployment
+name: cron-job
+on:
+  schedule:
+    # runs tests every day at 4am
+    - cron: '0 4 * * *'
+  workflow_dispatch:
 
-on: push
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
+  nightly:
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
