@@ -8,7 +8,7 @@ describe('Telus Search', () => {
     cy.visit('https://telus.com')
 
     // Set the viewport to 2999x2000
-    // This is done to ensure that the mobile version of the page is loaded
+    // This is done to ensure that it open to bigger window size
     cy.viewport(2999, 2000)
 
     // Wait for the search button to be visible, then hover over it
@@ -55,7 +55,7 @@ describe('Telus Search', () => {
     // This is done to verify that the search function is working properly
     cy.get('ul> li > a[href^="https://www.telus.com"][href*="search_result_"]').should('have.length.at.least', 6)
 
-    cy.wait(5000).then(() => { // this wait is only to fix github actions time out error
+   
       // Test that the first 6 search results have clickable links
       // This is done to verify that the links are working properly
       const resultLinks = ['1', '2', '3', '4', '5', '6'];
@@ -68,6 +68,6 @@ describe('Telus Search', () => {
       // This is done to verify that the search result page is rendered correctly
       cy.get('ul> li > a[href^="https://www.telus.com/en/mobility"][href$="search_result_1"]').click()
   })
-  })
+  
  
 })
