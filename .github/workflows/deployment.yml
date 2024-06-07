@@ -16,5 +16,5 @@ jobs:
         uses: action/upload-artifacts@v2
         if: failure()
         with: 
-        name: image
-        path: cypress/screenshots*.png        
+          name: image
+          path: cypress/screenshots*.png        
