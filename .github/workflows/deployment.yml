@@ -12,10 +12,5 @@ jobs:
       - name: cypress run --browser chrome
         uses: cypress-io/github-action@v6
 
-      - name: Upload screenshots
-        uses: actions/upload-artifact@latest
-        if: failure()
-           with:
-              name: cypress-snapshots
-              path: cypress/screenshots*.png    
+
           
